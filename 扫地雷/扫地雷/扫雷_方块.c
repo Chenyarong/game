@@ -4,20 +4,20 @@
 
 #define MAX_ROW 10
 #define MAX_COL 10
-#define DEFAULT_MINE_COUNT 10//¶¨ÒåµØÀ×¸öÊıÎª10
-//Èı¸ö³£Á¿ÔİÊ±¶¼²»ÄÜĞŞ¸Ä
+#define DEFAULT_MINE_COUNT 10//å®šä¹‰åœ°é›·ä¸ªæ•°ä¸º10
+//ä¸‰ä¸ªå¸¸é‡æš‚æ—¶éƒ½ä¸èƒ½ä¿®æ”¹
 
 void  menu()
 {
 	printf("\t\t\t=============================\n");
-	printf("\t\t\t          1.¿ªÊ¼ÓÎÏ·           \n");
-	printf("\t\t\t          2.ÍË³öÓÎÏ·           \n");
+	printf("\t\t\t          1.å¼€å§‹æ¸¸æˆ           \n");
+	printf("\t\t\t          2.é€€å‡ºæ¸¸æˆ           \n");
 	printf("\t\t\t=============================\n");
-	printf("\t\t\t\tÇëÑ¡Ôñ    ");
+	printf("\t\t\t\tè¯·é€‰æ‹©    ");
 }
 void init(char show_map[MAX_ROW + 2][MAX_COL + 2], char mine_map[MAX_ROW + 2][MAX_COL + 2])
 {
-	//¶ÔÓÃ»§½çÃæ³õÊ¼»¯£¬»¹¶¼Ã»ÓĞÏÆ¿ªµÄ¸ñ×Ó£¬È«²¿¶¼Îª¿Õ¸ñ
+	//å¯¹ç”¨æˆ·ç•Œé¢åˆå§‹åŒ–ï¼Œè¿˜éƒ½æ²¡æœ‰æ€å¼€çš„æ ¼å­ï¼Œå…¨éƒ¨éƒ½ä¸ºç©ºæ ¼
 	for (int row = 0; row < MAX_ROW + 2; row++)
 	{
 		for (int col = 0; col < MAX_COL + 2; col++)
@@ -25,7 +25,7 @@ void init(char show_map[MAX_ROW + 2][MAX_COL + 2], char mine_map[MAX_ROW + 2][MA
 			show_map[row][col] = ' ';
 		}
 	}
-	//¶Ôº¬ÓĞµØÀ×µÄµØÍ¼³õÊ¼»¯£¬È«²¿³õÊ¼»¯Îª¡® ¡¯£¬ÔİÊ±Ã»ÓĞµØÀ×µÄµØÍ¼
+	//å¯¹å«æœ‰åœ°é›·çš„åœ°å›¾åˆå§‹åŒ–ï¼Œå…¨éƒ¨åˆå§‹åŒ–ä¸ºâ€˜ â€™ï¼Œæš‚æ—¶æ²¡æœ‰åœ°é›·çš„åœ°å›¾
 	for (int row = 0; row < MAX_ROW + 2; row++)
 	{
 		for (int col = 0; col < MAX_COL + 2; col++)
@@ -34,47 +34,47 @@ void init(char show_map[MAX_ROW + 2][MAX_COL + 2], char mine_map[MAX_ROW + 2][MA
 		}
 	}
 	int mine_count = DEFAULT_MINE_COUNT;
-	while (mine_count>0)//Ëæ»ú²¼ÖÃµØÀ×£¬²¼ÖÃ10£¨´ÓDEFAULT_MINE_COUNT¼õµ½0£©¸ö
+	while (mine_count>0)//éšæœºå¸ƒç½®åœ°é›·ï¼Œå¸ƒç½®10ï¼ˆä»DEFAULT_MINE_COUNTå‡åˆ°0ï¼‰ä¸ª
 	{
 		int row = rand() % MAX_ROW + 1;
 		int col = rand() % MAX_COL + 1;
-		if (mine_map[row][col] == '1')//µ±Ç°Î»ÖÃÒÑ¾­ÓĞÀ×£¬ÖØĞÂ²úÉúËæ»ú×ø±ê
+		if (mine_map[row][col] == '1')//å½“å‰ä½ç½®å·²ç»æœ‰é›·ï¼Œé‡æ–°äº§ç”Ÿéšæœºåæ ‡
 		{
 			continue;
 		}
-		mine_map[row][col] = '1';//½«º¬ÓĞµØÀ×µÄÎ»ÖÃ±íÊ¾Îª¡®1¡¯
+		mine_map[row][col] = '1';//å°†å«æœ‰åœ°é›·çš„ä½ç½®è¡¨ç¤ºä¸ºâ€˜1â€™
 		mine_count--;
 	}
 }
 void DisplayMap(char map[MAX_ROW + 2][MAX_COL + 2])
 {
-	//´òÓ¡µÚÒ»ĞĞ¡°     1   2   3   4   5   6   7   8   9   10  ¡±   ÁĞ±êÇ© 
+	//æ‰“å°ç¬¬ä¸€è¡Œâ€œ     1   2   3   4   5   6   7   8   9   10  â€   åˆ—æ ‡ç­¾ 
 	printf("    |");
 	for (int col = 1; col <= MAX_COL; col++)
 		printf(" %2d ", col);
 	printf("\n");
-	//´òÓ¡ÉÏ±ß¿ò
+	//æ‰“å°ä¸Šè¾¹æ¡†
 	for (int col = 1; col < MAX_COL; col++)
 		printf("_____");
 	printf("\n");
-	//°´ĞĞ´òÓ¡¾ßÌåµÄµØÍ¼
+	//æŒ‰è¡Œæ‰“å°å…·ä½“çš„åœ°å›¾
 	for (int row = 1; row <= MAX_ROW; row++)
 	{
 		//printf(" %2d |   |   |   |   |   |   |   |   |   |", row);
 		printf(" %2d | %c | %c | %c | %c | %c | %c | %c | %c | %c | %c |\n", row,
 			map[row][1], map[row][2], map[row][3], map[row][4], map[row][5], map[row][6],
-			map[row][7], map[row][8], map[row][9], map[row][10]);//ĞĞ×ø±ê±êÇ©
+			map[row][7], map[row][8], map[row][9], map[row][10]);//è¡Œåæ ‡æ ‡ç­¾
 		printf("    |___|___|___|___|___|___|___|___|___|___|\n");
 	}
 
 }
 
 void updateshowmap(char showmap[MAX_ROW + 2][MAX_COL + 2], char minemap[MAX_ROW + 2][MAX_COL + 2], int row, int col)
-//¸ù¾İminemapº¯Êı¼ÆËã(row£¬col)µãÖÜÎ§µØÀ×µÄÊıÁ¿
-//½á¹ûĞ´µ½¶ÔÓ¦µÄshowmapÉÏ
+//æ ¹æ®minemapå‡½æ•°è®¡ç®—(rowï¼Œcol)ç‚¹å‘¨å›´åœ°é›·çš„æ•°é‡
+//ç»“æœå†™åˆ°å¯¹åº”çš„showmapä¸Š
 {
 	int mine_count = 0;
-	//¼ÆËã(row£¬col)µãÖÜÎ§µØÀ×µÄÊıÁ¿
+	//è®¡ç®—(rowï¼Œcol)ç‚¹å‘¨å›´åœ°é›·çš„æ•°é‡
 	for (int i = row - 1; i <= row + 1; i++)
 	{
 		for (int j = col - 1; j <= col + 1; j++)
@@ -85,53 +85,54 @@ void updateshowmap(char showmap[MAX_ROW + 2][MAX_COL + 2], char minemap[MAX_ROW 
 	}
 	if (mine_count == 0)
 	{
-		//ÓÉÓÚ¼ÓÁË±ß¿ò£¬ËùÒÔÒÔÏÂµÄ×ø±ê²»»áÔ½½ç
-		showmap[row - 1][col - 1] = '0';
-		showmap[row - 1][col] = '0';
-		showmap[row - 1][col + 1] = '0';
-		showmap[row][col - 1] = '0';
-		showmap[row][col + 1] = '0';
-		showmap[row + 1][col - 1] = '0';
-		showmap[row + 1][col] = '0';
-		showmap[row + 1][col + 1] = '0';
+		//ç”±äºåŠ äº†è¾¹æ¡†ï¼Œæ‰€ä»¥ä»¥ä¸‹çš„åæ ‡ä¸ä¼šè¶Šç•Œ
+		
+		showmap[row - 1][col - 1] = '*';
+		showmap[row - 1][col] = '*';
+		showmap[row - 1][col + 1] = '*';
+		showmap[row][col - 1] = '*';
+		showmap[row][col + 1] = '*';
+		showmap[row + 1][col - 1] = '*';
+		showmap[row + 1][col] = '*';
+		showmap[row + 1][col + 1] = '*';
 	}
 
-	showmap[row][col] = '0' + mine_count;//mine_count ÊÇÒ»¸öintĞÍÊıÖµ£¬²»ÊÇ×Ö·û£¬¼ÓÉÏÒ»¸ö×Ö·û0
+	showmap[row][col] = '0' + mine_count;//mine_count æ˜¯ä¸€ä¸ªintå‹æ•°å€¼ï¼Œä¸æ˜¯å­—ç¬¦ï¼ŒåŠ ä¸Šä¸€ä¸ªå­—ç¬¦0
 }
 void game()
 {
-	//1.¶¨ÒåÁ½¸öÊı×é
-	//2.¶ÔÁ½¸öÊı×é³õÊ¼»¯
-	//3.ÈÃÍæ¼ÒÊäÈë×ø±ê£¬ÅĞ¶Ï×ø±êÊÇ·ñºÏ·¨
-	//4.ÅĞ¶¨Íæ¼ÒÊÇ·ñ²ÈÀ×£¬Èô²ÈÀ×£¬ÓÎÏ·½áÊø£¬´òÓ¡mine_map
-	//5.Èç¹ûÃ»ÓĞ²ÈÀ×£¬¾ÍÅĞ¶¨ÊÇ·ñÏÆ¿ªÁËËùÓĞµÄ¸ñ×Ó £¨ÅĞ¶¨Íæ¼ÒÊÇ·ñÊ¤Àû£©   
-	//6.Èç¹ûÃ»ÓĞÈ«²¿ÏÆ¿ª¾ÍÍ³¼Æ¸ÃÎ»ÖÃÖÜÎ§À×µÄÊıÁ¿²¢¸üĞÂµ½µØÍ¼ÉÏ
+	//1.å®šä¹‰ä¸¤ä¸ªæ•°ç»„
+	//2.å¯¹ä¸¤ä¸ªæ•°ç»„åˆå§‹åŒ–
+	//3.è®©ç©å®¶è¾“å…¥åæ ‡ï¼Œåˆ¤æ–­åæ ‡æ˜¯å¦åˆæ³•
+	//4.åˆ¤å®šç©å®¶æ˜¯å¦è¸©é›·ï¼Œè‹¥è¸©é›·ï¼Œæ¸¸æˆç»“æŸï¼Œæ‰“å°mine_map
+	//5.å¦‚æœæ²¡æœ‰è¸©é›·ï¼Œå°±åˆ¤å®šæ˜¯å¦æ€å¼€äº†æ‰€æœ‰çš„æ ¼å­ ï¼ˆåˆ¤å®šç©å®¶æ˜¯å¦èƒœåˆ©ï¼‰   
+	//6.å¦‚æœæ²¡æœ‰å…¨éƒ¨æ€å¼€å°±ç»Ÿè®¡è¯¥ä½ç½®å‘¨å›´é›·çš„æ•°é‡å¹¶æ›´æ–°åˆ°åœ°å›¾ä¸Š
 
-	char show_map[MAX_ROW + 2][MAX_COL + 2];//±íÊ¾¸øÍæ¼ÒÕ¹Ê¾µÄµØÍ¼£¬¼ÓÁË±ß¿ò£¬ËùÒÔ¼ÓÁË2£¬±ß¿òÓÃÓÚ´òÓ¡µØÍ¼µÄĞĞÁĞºÅ
-	char mine_map[MAX_ROW + 2][MAX_COL + 2];//±íÊ¾»¹ÓĞµØÀ×µÄµØÍ¼
-	int black_count = 0;//ÏÆ¿ª¸ñ×ÓµÄÊıÁ¿
+	char show_map[MAX_ROW + 2][MAX_COL + 2];//è¡¨ç¤ºç»™ç©å®¶å±•ç¤ºçš„åœ°å›¾ï¼ŒåŠ äº†è¾¹æ¡†ï¼Œæ‰€ä»¥åŠ äº†2ï¼Œè¾¹æ¡†ç”¨äºæ‰“å°åœ°å›¾çš„è¡Œåˆ—å·
+	char mine_map[MAX_ROW + 2][MAX_COL + 2];//è¡¨ç¤ºè¿˜æœ‰åœ°é›·çš„åœ°å›¾
+	int black_count = 0;//æ€å¼€æ ¼å­çš„æ•°é‡
 	init(show_map, mine_map);
 	DisplayMap(show_map);
 	while (1)
 	{
 		int row; int col;
-		printf("ÇëÍæ¼ÒÊäÈë×ø±ê£º");
+		printf("è¯·ç©å®¶è¾“å…¥åæ ‡ï¼š");
 		scanf("%d %d", &row, &col);
 		if (row <= 0 || row > MAX_ROW || col <= 0 || col > MAX_COL)
 		{
-			printf("ÊäÈë×ø±ê²»ºÏ·¨£¬ÇëÖØĞÂÊäÈë:");
+			printf("è¾“å…¥åæ ‡ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥:");
 			continue;
 		}
-		if (mine_map[row][col] == '1')//ÅĞ¶ÏÊÇ·ñ²ÈÀ×£º²ÈÀ×ÓÎÏ·½áÊø£¬´òÓ¡
+		if (mine_map[row][col] == '1')//åˆ¤æ–­æ˜¯å¦è¸©é›·ï¼šè¸©é›·æ¸¸æˆç»“æŸï¼Œæ‰“å°
 		{
-			printf("ÓÎÏ·½áÊø\n");
+			printf("æ¸¸æˆç»“æŸ\n");
 			DisplayMap(mine_map);
 			break;
 		}
-		++black_count;//Ã¿ÊäÈëÒ»´Î×ø±ê¾Í¼ÆËãÏÆ¿ª¸ñ×ÓµÄÊıÁ¿
-		if (black_count == MAX_ROW*MAX_COL - DEFAULT_MINE_COUNT)//ËùÓĞ¸ñ×Ó¶¼±»ÏÆ¿ª,Íæ¼ÒÊ¤Àû,´òÓ¡£¬½áÊøÓÎÏ·
+		++black_count;//æ¯è¾“å…¥ä¸€æ¬¡åæ ‡å°±è®¡ç®—æ€å¼€æ ¼å­çš„æ•°é‡
+		if (black_count == MAX_ROW*MAX_COL - DEFAULT_MINE_COUNT)//æ‰€æœ‰æ ¼å­éƒ½è¢«æ€å¼€,ç©å®¶èƒœåˆ©,æ‰“å°ï¼Œç»“æŸæ¸¸æˆ
 		{
-			printf("¹§Ï²ÄúÉ¨ÍêÁËËùÓĞµÄÀ×£¡£¡!\n");
+			printf("æ­å–œæ‚¨æ‰«å®Œäº†æ‰€æœ‰çš„é›·ï¼ï¼!\n");
 			DisplayMap(show_map);
 			break;
 		}
@@ -139,7 +140,7 @@ void game()
 		DisplayMap(show_map);
 	}
 }
-void started()//ÓÎÏ·Èë¿Ú
+void started()//æ¸¸æˆå…¥å£
 {
 	menu();
 	int choice;
@@ -154,7 +155,7 @@ void started()//ÓÎÏ·Èë¿Ú
 		}
 		else
 		{
-			printf("ÊäÈë·Ç·¨£¬ÇëÖØĞÂÊäÈë");
+			printf("è¾“å…¥éæ³•ï¼Œè¯·é‡æ–°è¾“å…¥");
 			continue;
 		}
 	}
